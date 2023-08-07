@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code Editor - Bharat Markup Language </title>
+
+    <!--Script for Bootstrap-->
+    <link rel="stylesheet" href="{% static 'css/bootstrapCSS/bootstrap.css' %}">
+    <script type="text/javascript" src="{% static 'js/bootstrapJS/bootstrap.js'%}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'codemirror/lib/codemirror.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'codemirror/lib/codemirror.css' %}">
+    <script type="text/javascript" src="{% static 'codemirror/mode/xml/xml.js' %}"></script>
+    <script type="text/javascript" src="{% static 'codemirror/addon/edit/closetag.js' %}"></script>
+    <script type="text/javascript" src="{% static 'codemirror/addon/edit/closebrackets.js' %}"></script>
+    <script type="text/javascript" src="{% static 'codemirror/addon/search/search.js' %}"></script>
+    <script type="text/javascript" src="{% static 'codemirror/addon/search/searchcursor.js' %}"></script>
+    <!--<script type="text/javascript" src="{% static 'codemirror/addon/dialog/dialog.js' %}"></script>
+    <script type="text/javascript" src="{% static 'codemirror/addon/dialog/dialog.css' %}"></script>-->
+    <link rel="stylesheet" type="text/css" href="{% static 'codemirror/theme/dracula.css' %}">
+    <link rel="stylesheet"  href="{% static 'css/code.css' %}">
+     <script type="text/javascript" src="{% static 'codemirror/mode/css/css.js' %}"></script>
+
+    <!-- KEYBOARD FILES -->
+    <script type="text/javascript" src="{% static 'js/keyboard.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-ui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mousewheel.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/extension-typing.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/extension-autocomplete.js' %}"></script>
+    <!-- <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script> -->
+    <link rel="stylesheet"  href="{% static 'css/keyboard.css' %}">
+    <!-- <link rel="stylesheet"  href="{% static 'css/jquery-ui.css' %}"> -->
+
+    <script src='https://s.keyman.com/kmw/engine/13.0.109/keymanweb.js'></script>
+    <script src='https://s.keyman.com/kmw/engine/13.0.109/kmwuitoggle.js'></script>
+    <!-- <script src="https://s.keyman.com/kmw/engine/13.0.109/kmwuifloat.js"></script> -->
+
+    <!--Scripts added for autocomplete support-->
+    <link rel="stylesheet" type="text/css" href="{% static 'codemirror/addon/hint/show-hint.css' %}">
+    <script type="text/javascript" src="{% static 'codemirror/addon/hint/show-hint.js' %}"></script>
+    <script type="text/javascript" src="{% static 'codemirror/addon/hint/xml-hint.js' %}"></script>
+
+    <!--Script for Autocomplete-->
+    <script type="text/javascript" src="{% static 'js'%}/languages/hint/{{language|lower}}html-hint.js "></script>
+    
+    <!--link for Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/B_favicon.png' %}">
+    
+    <script>
+      (function(kmw) {
+          kmw.init({attachType:'auto'});
+          kmw.addKeyboards('{{ keyboard_code }}');
+          kmw.addKeyboards('@en');
+      })(keyman);
+    </script>
+</head>
+<body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand px-4" href="{% url 'bhaml' %}">
+        <img src="{% static 'img/logo.png' %}" alt="" width="120" height="40">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link px-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'img/file-icon.png' %}" alt="" width="22" height="22">
+                {{file}}
+              <img src="{% static 'img/arrow-down-bold.png' %}" alt="" width="15" height="15">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><button class="btn newFilebtn" onclick="new_editor();">{{new}}</button></li>
+              <li>
+                <input type="file" id="fileToLoad" onchange="loadFileAsText();" accept=".bhaml,.html" hidden>
+                <button class="btn" id="uploadbtn" onclick="openDialog();">{{select_file}}</button>
+              </li>
+              <li><button class="btn downloadbtn"  onclick="saveFileAsHTML(); saveFileAsBHAML();">{{save}}</button></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link px-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{% static 'img/book-icon.png' %}" alt="" width="22" height="22">
+                {{learn}}
+              <img src="{% static 'img/arrow-down-bold.png' %}" alt="" width="15" height="15">
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn documentationbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  {{documentation}}
+                </button>
+              </li>
+            </ul>
+          </li>
+            <!-- Modal -->
+            <div class="modal fade container-fluid" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{documentation}}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <select name="document-lang" id="document-lang" class="form-select" required>
+                      <option value="" disabled selected hidden>{{select_regional_lang}}</option>
+                      <option value="0">हिंदी (Hindi)</option>
+                      <option value="1">ગુજરાતી (Gujarati)</option>
+                      <option value="2">ಕನ್ನಡ (Kannada)</option>
+                      <option value="3">മലയാളം (Malayalam)</option>
+                      <option value="4">मराठी (Marathi)</option>
+                      <option value="5">ଓଡିଆ (Odia)</option>
+                      <option value="6">ਪੰਜਾਬੀ (Punjabi)</option>
+                      <option value="7">தமிழ் (Tamil)</option>
+                      <option value="8">తెలుగు (Telugu)</option>
+                    </select>
+
+                    <select name="programming-lang" id="programming-lang" class="form-select" style="margin-top: 20px !important; margin-bottom: 20px !important;" required>
+                      <option value="" disabled selected hidden>{{select_coding_lang}}</option>
+                      <option value="0">HTML</option>
+                      <option value="1">CSS</option>
+                    </select>
+
+                    <button type="button" id="doc-download-btn" class="btn save-btn" onclick="doc_download();">{{save}}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <li class="nav-item">
+           <select name="prog_lang" id="prog_lang" class="form-select" onchange="prog_lang()"  required>
+<!--            <option value="" disabled selected hidden>Select Programming Language</option>-->
+            <option value="html" {% if mode_name == "text/html" %}  selected {% endif %}>HTML</option>
+
+
+            <option value="css" {% if mode_name == "text/css" %}  selected {% endif %}>CSS</option>
+
+        </select>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link">
+              <img src="{% static 'img/language-icon.png' %}" alt="" width="22" height="22">
+              {{lang_btn}}
+              <select name="language" id="language" onchange="lang_change(value);">
+                <option value="" style="display: none;">{{language}}</option>
+                <option id="Hindi" value="{% url 'hindi_code_editor' %}">हिंदी (Hindi)</option>
+                <option id ="Gujarati" value="{% url 'gujarati_code_editor' %}">ગુજરાતી (Gujarati)</option>
+                <option id ="Kannada" value="{% url 'kannada_code_editor' %}">ಕನ್ನಡ (Kannada)</option>
+                <option id ="Malayalam" value="{% url 'malayalam_code_editor' %}">മലയാളം (Malayalam)</option>
+                <!--<option id ="Maori" value="{% url 'maori_code_editor' %}">Maori</option>-->
+                <option id ="Marathi" value="{% url 'marathi_code_editor' %}">मराठी (Marathi)</option>
+                <option id ="Odia" value="{% url 'odia_code_editor' %}">ଓଡିଆ (Odia)</option>
+                <option id ="Punjabi" value="{% url 'punjabi_code_editor' %}">ਪੰਜਾਬੀ (Punjabi)</option>
+                <option id ="Tamil" value="{% url 'tamil_code_editor' %}">தமிழ் (Tamil)</option>
+                <option id ="Telugu" value="{% url 'telugu_code_editor' %}">తెలుగు (Telugu)</option>
+                <option id ="Bangla" value="{% url 'bangla_code_editor' %}">বাংলা (Bangla)</option>
+                <!--<option id ="Arabic" value="{% url 'arabic_code_editor' %}">Arabic</option>-->
+              </select>
+              <script>
+                var language_selected = {{language}};  //not an error, just getting current language through backend
+                language_selected.style.display = "none";
+              </script>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row">
+      <!--First div for all functions like undo,redo,find-->
+      <div class="sidebar d-flex mb-auto flex-column">
+        <ul class="nav flex-column mb-auto text-center">
+          <li class="mt-3">
+              <img src="{% static 'img/undo-icon.png' %}"><br>
+              <button class="btn sidebarbutton" onclick="undolastchange();" title="{{undo}}">{{undo}}</button>
+          </li>
+          <li class="mt-3">
+            <img src="{% static 'img/redo-icon.png' %}"><br>
+            <button class="btn sidebarbutton" onclick="redolastchange();" title="{{redo}}">{{redo}}</button>
+          </li>
+          <li class="mt-3">
+            <img src="{% static 'img/find-icon.png' %}"><br>
+            <button class="btn sidebarbutton" onclick="find_in_code();" title="{{find}}">{{find}}</button>
+          </li>
+          <li class="mt-3">
+            <img src="{% static 'img/replace-icon.png' %}"><br>
+            <button class="btn sidebarbutton" onclick="replace_all_in_code();" title="{{replaceAll}}">{{replaceAll}}</button>
+          </li>
+          <li class="mt-3">
+            <img src="{% static 'img/clear-icon.png' %}"><br>
+            <button class="btn sidebarbutton" onclick="clear_editor();" title="{{clear}}">{{clear}}</button>
+          </li>
+        </ul>
+      </div>
+
+      <!--Second div is for code editor and keyboard-->
+      <div class="main-editor" id="KeymanWebControl" display="none">
+        <div id="wrap" style="height:65%; background-color: #282a36 !important;">
+          <textarea class="codemirror-textarea" id="editor">{% if mode_name == "text/html" %}  {{boilerplate}} {% endif %}</textarea>
+        </div>
+        <div class="statusBar">
+          <span class="currentLine">current line: <span id="currentLine"></span></span>
+        </div>
+        <!--<div class="keyboard">keyboard will be here</div>-->
+      </div>
+      
+      <!--Third div is for output-->
+      <div class="col">
+        <iframe class="second"> </iframe>
+      </div>
+    </div>
+  </div>
+  <script>
+  {% if mode_name == "text/css" %}
+  var modename="text/css"
+  {% else %}
+  var modename="text/html"
+  {% endif %}
+      var editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+        mode: modename,
+        htmlMode: true,
+        theme: "dracula",
+        lineWrapping: true,
+        lineNumbers: true,
+        autoCloseTags: true,
+        autoCloseBrackets: true,
+        extraKeys: {"Ctrl":"autocomplete"},
+   })
+
+  //editor.on('keyup',function(editor,event){
+  // CodeMirror.commands.autocomplete(editor);
+  //});
+
+  editor.on("keyup", function(cm, event) {
+    //only show hits for alpha characters
+    if(
+    (event.keyCode >= 65 && event.keyCode <= 90) ||
+    (event.keyCode >= 97 && event.keyCode <= 122) ||
+    (event.keyCode >= 46 && event.keyCode <= 57)
+  ) {
+        if(timeout) clearTimeout(timeout);
+        var timeout = setTimeout(function() {
+            CodeMirror.showHint(cm, CodeMirror.hint.clike, {completeSingle: false});
+        }, 150);
+    }
+});
+  </script>
+    <script src="https://use.fontawesome.com/caa8f5dcc9.js"></script>
+    <script type="text/javascript" src="{% static location %}"></script>
+<!--    <script type="text/javascript" src="{% static 'js/default_editor.js' %}"></script>-->
+    <script src="{% static 'js/editor.js' %}"></script>
+    <script type="text/javascript">at_load()</script>
+    <script src="{% static 'js/resp.js' %}"></script>
+</body>
+</html>

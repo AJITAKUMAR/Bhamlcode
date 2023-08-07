@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns:overflow-y="http://www.w3.org/1999/xhtml" xmlns:overflow-x="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/bhamlnew.css' %}">
+  <title>BHAML - Bharat Markup Language</title>
+
+  <!--Script for Bootstrap-->
+  <link rel="stylesheet" href="{% static 'css/bootstrapCSS/bootstrap.css' %}">
+  <script type="text/javascript" src="{% static 'js/bootstrapJS/bootstrap.js'%}"></script>
+  
+  <!--link for Favicon-->
+  <link rel="icon" type="image/x-icon" href="{% static 'img/B_favicon.png' %}">
+
+</head>
+<body>
+  <div class="container-fluid">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="{% url 'bhaml' %}">
+        <img src="{% static 'img/logo.png' %}" alt="" width="150" height="55">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a href="{% url 'hindi_code_editor' %}">
+              <button type="button" class="btn  workspace-btn">Coding Workspace</button><br>
+            </a>
+          </li>
+        </ul> 
+      </div>
+    </nav>
+
+    <!-- First Section-->
+    <div class="section-1">
+      <div class="row">
+        <div class="col-3">
+          <h1 class="heading-text" >Don't&nbsp;let&nbsp;a<br>language&nbsp;stop&nbsp;you</h1><br>
+          <h6 class="sub-heading">Don't&nbsp;Let&nbsp;your&nbsp;inability&nbsp;to&nbsp;speak&nbsp;English&nbsp;come&nbsp;into<br>Your&nbsp;way&nbsp;to&nbsp;sucess.&nbsp;Start&nbsp;coding&nbsp;in&nbsp;your<br>own&nbsp;native&nbsp;language&nbsp;with&nbsp;BHAML.</h6>
+          <a href="{% url 'hindi_code_editor' %}"><button type="button" class="btn  workspace-btn1">Code in Your Language</button></a>
+        </div>
+
+        <div class="col-9">
+          <img src="{% static 'img/grp1.png' %}" class="img-fluid" style="max-width: 102% !important;">
+        </div>
+      </div>
+    </div>
+    <!--End of First Section-->
+
+    <!--Video Section-->
+    <div class="vidCol ratio ratio-21x9">
+      <video playsinline autoplay muted loop>
+        <source src="{% static 'video/BhamlVideo.mp4' %}" type="video/mp4">
+      </video>
+    </div>
+    <!--End of Video Section-->
+
+    <!-- Features Section-->
+    <div id="features" class="features">
+      <u><h1 class="heading" >Features</h1></u>
+      <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+        <div class="col">
+          <div class="card">
+            <img src="{% static 'img/code-icon.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>Code in your language</b></h5>
+              <p class="card-text">It provides you a platform to code in your native language.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="{% static 'img/download-icon.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>Download Files</b></h5>
+              <p class="card-text">Download/Upload your code files whenever you wish to.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="{% static 'img/keyboard-icon.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>On Screen Keyboard</b></h5>
+              <p class="card-text">Access on-screen regional keyboard while coding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4 text-center">
+        <div class="col">
+          <div class="card">
+            <img src="{% static 'img/preview-icon.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>Live Preview</b></h5>
+              <p class="card-text">Instantly see the live Preview of your code.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="{% static 'img/autotag-icon.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>Get Keyword Suggestions</b></h5>
+              <p class="card-text">Editor will suggest you keywords in respective language.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="{% static 'img/learning-icon.png' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><b>Learning Material</b></h5>
+              <p class="card-text">Get help writing code and selecting the optimal tag.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of Features Section-->
+
+    <!--Select your language Section-->
+    <div id="language" class="language-section text-center">
+      <u><h1 class="heading" >Select Your Language</h1></u>
+      <div class="lang-col-1" style="padding-top: 30px !important;">
+        <img src="{% static 'img/hindi.png' %}" alt="hindi" class="img-fluid" style="margin: 8px !important;">
+        <img src="{% static 'img/kannada.png' %}" alt="kannada" class="img-fluid" style="margin: 8px !important;">      
+        <img src="{% static 'img/malayalam.png' %}" alt="malayalam" class="img-fluid" style="margin: 8px !important;">
+        <img src="{% static 'img/tamil.png' %}" alt="tamil" class="img-fluid" style="margin: 8px !important;">
+        <img src="{% static 'img/odia.png' %}" alt="odia" class="img-fluid" style="margin: 8px !important;">
+      </div>
+      <div class="lang-col-2" style="padding-top: 30px !important;">
+        <img src="{% static 'img/marathi.png' %}" alt="marathi" class="img-fluid" style="margin: 8px !important;">
+        <img src="{% static 'img/punjabi.png' %}" alt="punjabi" class="img-fluid" style="margin: 8px !important;">      
+        <img src="{% static 'img/telugu.png' %}" alt="telugu" class="img-fluid" style="margin: 8px !important;">
+        <img src="{% static 'img/gujrati.png' %}" alt="gujrati" class="img-fluid" style="margin: 8px !important;">
+      </div>
+    </div>
+    <!--End of Select your language Section-->
+
+    <!--About BHAML Section-->
+    <div class="about">
+      <div class="about-container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <u><h1 class="heading" >About BHAML</h1></u>
+            <p>The English Language has always dominated Indian languages. 
+              However, till date, many of us are not comfortable with the English 
+              language. BHAML provides the opportunnity to every student, 
+              regardless of their proficiency in English, to code by using their 
+              mother tongue.
+            </p>
+            <p>
+              The tools integrated in our text editor like live preview, integrated
+              on-screen keyboard and learning material provided can be used to
+              write codes faster.
+            </p>
+          </div>
+  
+          <div class="col-lg-6 d-lg-block">
+            <img src="{% static 'img/about.png' %}" alt="about" class="img-fluid float-end">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of About BHAML Section-->
+
+    <!--Feedback Section-->
+    <div id="feedback" class="feedback-area">
+      <div class="feedback-container">
+        <div class="row align-items-center">
+          <div class="feedback-form col-lg-6">
+            <h6><b>Fill the quick form and we will try to get in touch as soon as we can.</b></h6>
+           <h1><b>HOW CAN WE HELP</b><span style="color: #D84727;"><b> ?</b></span></h1>
+            <form action="" method="POST">
+              {% csrf_token %}
+              <div class="mb-3">
+                <input type="email" required class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address">
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" name="subject" placeholder="Message Subject (optional)">
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" name="message" required id="exampleFormControlTextarea1" rows="3" placeholder="Type a message..."></textarea>
+              </div>
+              <button type="submit" class="btn  submit-btn">Submit</button>
+            </form>
+          </div>
+  
+          <div class="col-lg-6 d-lg-block">
+            <img src="{% static 'img/feedback.png' %}" alt="about" class="img-fluid float-end">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--End of Feedback Section-->
+
+    <!--Footer Section-->
+    <div class="footer row text-center">
+      <div class="footer-col1 col-3">
+        <img src="{% static 'img/logo.png' %}" alt="" class="img-fluid" width="140" height="40">
+        <h3 style="font-size: 2vw !important; padding-top: 10px;">Useful Links</h3>
+        <a href="{% url 'hindi_code_editor' %}" style="font-size: 1.2vw !important;">Coding Workspace</a>
+      </div>
+      <div class="footer-col2 col-3">
+        <h3 style="font-size: 2vw !important;">Resources</h3>
+        <a style="font-size: 1.2vw !important;">Documentation</a><br>
+        <a href="#language" style="font-size: 1.2vw !important;">Languages</a><br>
+        <a href="#feedback" style="font-size: 1.2vw !important;">Feedback</a>
+      </div>
+      <div class="footer-col3 col-3">
+        <h3 style="font-size: 2vw !important;">About</h3>
+        <a href="#navbar" style="font-size: 1.2vw !important;">BHAML</a><br>
+        <a href="https://www.techmahindra.com/en-in/innovation/makers-lab/">Maker's Lab</a>
+      </div>
+    </div>
+    <div class="footer-rights text-center">
+      <h5 style="font-size: 1.5vw !important;">Copyright © Tech Mahindra Limited. All Rights Reserved</h5>
+      <img src="{% static 'img/techM-logo.png' %}" class="img-fluid" alt="" width="10%" height="10" style="padding-bottom: 10px !important;">
+    </div>
+    <!--End of Footer Section-->
+  </div>
+</body>
+</html>
