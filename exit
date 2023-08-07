@@ -1,0 +1,30 @@
+[33mcommit 6927f91f278c33097fe9a0b30ea4df038bbec767[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 18b8e07 6efd405
+Author: abhaybabbar <babbarabhay1852@gmail.com>
+Date:   Tue Feb 2 18:34:53 2021 +0530
+
+    Merge branch 'main' of https://bitbucket.org/bharat_code/bhaml_core
+
+[33mcommit 18b8e07f3f2cfd74d9be7b7e79506e4aa3c0463f[m
+Author: abhaybabbar <babbarabhay1852@gmail.com>
+Date:   Tue Feb 2 18:29:59 2021 +0530
+
+    Basic Text Editor Added
+
+[33mcommit 6efd405131953f350470804ff49a95bba40cbb0f[m
+Author: Mihir Ajaybhai Benani <mihirbenani@gmail.com>
+Date:   Sun Jan 31 12:47:56 2021 +0000
+
+    README.md edited online with Bitbucket
+
+[33mcommit 6fbf0e2baa60634802111f60c9fdd0538f2c9833[m
+Author: BenoiAlex <benoialex123@gmail.com>
+Date:   Fri Jan 29 11:39:05 2021 +0530
+
+    Added Django framework
+
+[33mcommit cf34e33c818057b2acae3fcc9c9a6c8c9045263c[m
+Author: Benoi Alex <benoialex1999@gmail.com>
+Date:   Fri Jan 29 05:45:45 2021 +0000
+
+    Initial commit

@@ -1,0 +1,3 @@
+Boiler plate code should change
+Keyboard changes
+NLP script to translate hindi to english to show the preview

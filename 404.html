@@ -1,0 +1,87 @@
+<html>
+<head>
+<style>
+
+.error-not-found
+{
+	display: block;
+	width: 25%;
+	margin: 0px auto;
+	border: 1px solid #dadada;
+	box-shadow: 5px 5px 5px 5px #dadada;
+	padding: 60px;
+}
+.error-not-found h2
+{
+	text-align:center;
+}
+.error-btn
+{
+	-moz-user-select: none;
+    background-color: #227BEA;
+	color:#fff;
+    border: 1px solid #186acf;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.42857;
+    padding: 4px 15px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+	display:block;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#wrap {
+width: auto;
+position: relative;
+}
+
+.left, .right {
+width: 150px; //or use 30%
+float: left;
+}
+
+.center {
+float: left;
+min-width: 800px; //or use 60%
+width: auto;
+position: relative;
+}
+
+.clearBoth {
+clear: both;
+}
+</style>
+</head>
+
+
+<body>
+<div>
+            <h1>&nbsp;</h1>
+            <div class="error-not-found">
+            
+		    <!--<img src="{% static 'images/e404.png' %}" style="display: block;margin-left: auto;margin-right: auto;width: 211px;">-->
+						
+            <h2>Sorry! We couldn't find it.(An error occurred)</h2>
+	    <!--<h5>If the error persists, please copy the error into the trouble ticket form and submit it for IT to review.</h5>
+			<p>Trace Back output</p>
+			<br/>
+			<div id="wrap">-->
+            {{ request.status_code }}
+   <!--<div class="left"><button class="error-btn" onclick="window.location='file://172.16.20.11/Groups/TSA/TSA%20Web/Trouble.htm'">Create Ticket</button></div>
+   <div class="center"></div>	-->
+   <div class="right"><button class="error-btn" onclick="window.location='/'">Return to Home</button></div>
+
+   <div class="clearBoth"></div>
+
+</div>
+            </div>
+
+            </div>
+</body>
+</html>
