@@ -1,0 +1,8 @@
+dialog translation is letter by letter tamil as it is computer specific word
+main - tamil translation of main
+
+rb is letter by letter
+summary by meaning
+bhaml letter by letter
+
+th and thead were same for telugu
