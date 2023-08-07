@@ -1,0 +1,73 @@
+html, body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+}
+
+input[type=text],[type=password],[type=tel], select, textarea {
+    font-family: 'Raleway','Regular';
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    border: 1px solid #98b1ce;
+    box-sizing: border-box;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+input[type=button],[type=submit]{
+    font-family: 'Raleway','Regular';
+    font-size: 16px;
+    padding: 12px;
+    border: 1px solid #98b1ce;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.container{
+    height: 100%;
+    background: linear-gradient(#f28128, #ffdd3c);
+}
+
+.reg-form{
+    padding-top: 20px;
+    width: 600px;
+    margin: auto;
+    background: #ececec7a;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    top: 30px;
+    position: absolute;
+    left: 410px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/*Login form css is from below this comment*/
+
+.log-form{
+    padding-top: 20px;
+    width: 500px;
+    margin: auto;
+    background: #ececec7a;
+    padding: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    top: 120px;
+    position: absolute;
+    left: 450px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#logform2 {
+    display: none;
+}
+
+.loginblock{
+    padding-top: 20px;
+}
+.alert-danger,.alert-danger:hover{
+    color:#fff!important;background-color:#f44336!important
+}
